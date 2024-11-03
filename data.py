@@ -1,3 +1,31 @@
+name: Python Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # 将 '3.x' 替换为你的 Python 版本
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pyaes  # 安装 pyaes
+
+    - name: Run script
+      run: python data.py  # 替换为你的脚本文件名
+
 import requests
 import base64
 import json
